@@ -1,9 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 
-import ExpenseItem from './components/ExpenseItem';
+import ExpenseItem from './components/Expenses/ExpenseItem';
 
-function App() {
+const App = () => {
 
   const expenses = [
     {date: new Date(2021, 2, 29), title: 'Car insurance', amount: 294.67, location: 'jaipur'},
