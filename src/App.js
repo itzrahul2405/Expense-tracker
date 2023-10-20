@@ -55,6 +55,7 @@ function App() {
 
   return (
       <div>
+        <h2>Expense Tracker</h2>
         {expenses.map((exp, index) => (
           // key = {index}
           <ExpenseItem
@@ -67,7 +68,7 @@ function App() {
         }
       </div>  
   );
-  
+
 }
 
 
