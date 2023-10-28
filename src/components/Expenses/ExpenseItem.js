@@ -2,18 +2,27 @@ import './ExpenseItem.css';
 import ExpenseDate from './ExpenseDate';
 import ExpenseDetails from './ExpenseDetails';
 import Card from '../UI/card';
-import React from 'react';
+import React, { useState } from 'react';
 
 
 const ExpenseItem = (props) => {
   /*  below line can be used in place of line 24 to 28 than we do not need to use props  */
-  // const { ExpenseTitle, ExpenseAmount, ExpenseDate, locationOfExpenditure, onDelete} = props;   
+  // const { ExpenseTitle, ExpenseAmount, ExpenseDate, locationOfExpenditure, onDelete} = props;  
+  
+  const [title, setTitle] = useState(props.ExpenseTitle);
+  /* useState function takes our current value which is props.ExpenseTitle and assign it into title variable (first variable) and update that value using setTitle function */
+
+  const onEdit = () => {
+    setTitle('updated !');
+    console.log(title)  
+  }
 
   return (
     <Card className='expense-item'>
         <ExpenseDate ExpenseDate={props.ExpenseDate}/>
-        <ExpenseDetails ExpenseTitle={props.ExpenseTitle} ExpenseAmount={props.ExpenseAmount} locationOfExpenditure={props.locationOfExpenditure}/>
+        <ExpenseDetails ExpenseTitle={title} ExpenseAmount={props.ExpenseAmount} locationOfExpenditure={props.locationOfExpenditure}/>
         <button onClick = {props.onDelete} >DELETE</button>
+        <button onClick = {onEdit}>Edit Title</button>
     </Card>
 
     // <div className='expense-item'>
