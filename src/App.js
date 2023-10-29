@@ -1,6 +1,7 @@
 import './App.css';
 import ExpenseItem from './components/Expenses/ExpenseItem';
 import React, {useState} from 'react';
+import ExpenseForm from './components/inputExpense/ExpenseForm';
 
 const App = () => {
 
@@ -22,6 +23,7 @@ const App = () => {
   return (
       <div>
         <h2>Expense Tracker</h2>
+        <ExpenseForm/>
         {expenses.map((exp, index) => (
           // key = {index}
           <ExpenseItem
