@@ -3,44 +3,53 @@ import React, { useState } from 'react';
 
 function ExpenseForm(){
 
-    let title;
-    let date;
-    let amount;
-    let location;
+    let a;
+
+    const [enteredTitle, setEnteredTitle] = useState('')         /* phle enteredTitle empty h fir setEnteredTitle isme entered value (e.target.value) set krta h */
+    const [enteredDate, setEnteredDate] = useState('')
+    const [enteredAmount, setEnteredAmount] = useState('')
+    const [enteredLocation, setEnteredLocation] = useState('')
 
     const getTitle = (e) => {
-        title = e.target.value
-        console.log(title)
+        // a = e.target.value
+        // console.log('temp', a)                  /* if we direct assign value (e.target.value) into variable a and console it, this will work synchronously but if we use state it will work asynchronously (bit late) */
+
+        setEnteredTitle(e.target.value)
+        console.log(enteredTitle)
+        
     }
 
     const getDate = (e) => {
-        date = e.target.value
+        setEnteredDate(e.target.value)
+        // console.log(enteredDate)
     }
 
     const getAmount = (e) => {
-        amount = e.target.value
+        setEnteredAmount(e.target.value)
+        // console.log(enteredAmount)
     }
 
     const getLocation = (e) => {
-        location = e.target.value
+        setEnteredLocation(e.target.value)
+        // console.log(enteredLocation)
     }
 
-    const obj = {
-        'title': title,
-        'date': date,
-        'amount': amount,
-        'location': location
+    const myObj = {
+        'title': enteredTitle,
+        'date': enteredDate,
+        'amount': enteredAmount,
+        'location': enteredLocation
     }
 
-    const [val, setVal] = useState(obj)
+    const [obj, setObj] = useState(myObj)
     const logExpense = () => {
-        setVal({
+        setObj({
             'title': ' ',
             'date': ' ',
             'amount': ' ',
             'location': ' '
         })
-        console.log(val)
+        console.log(obj)
     }
 
     return (
