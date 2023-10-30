@@ -1,7 +1,8 @@
 import './ExpenseForm.css'
 import React, { useState } from 'react';
+import NewExpense from './NewExpense';
 
-function ExpenseForm(){
+function ExpenseForm(props){
 
     let a;
 
@@ -15,7 +16,7 @@ function ExpenseForm(){
         // console.log('temp', a)                  /* if we direct assign value (e.target.value) into variable a and console it, this will work synchronously but if we use state it will work asynchronously (bit late) */
 
         setEnteredTitle(e.target.value)
-        console.log(enteredTitle)
+        // console.log(enteredTitle)
         
     }
 
@@ -47,7 +48,13 @@ function ExpenseForm(){
             'location': enteredLocation
         }
 
-        console.log(myObj)
+        // console.log(myObj)
+        props.onSaveExpenseData(myObj)
+
+        setEnteredTitle('');
+        setEnteredDate('');
+        setEnteredAmount('');
+        setEnteredLocation('');
     }
 
 
@@ -108,28 +115,33 @@ function ExpenseForm(){
 
     return (
 
+
         <form id='form'  onSubmit={submitHandler}>
             <div>
                 <label htmlFor='title'>Enter Title:</label>
-                <input type="text" className='form-input' id='title' name='title' onChange={getTitle}></input>
+                <input type="text" className='form-input' id='title' name='title' value={enteredTitle} onChange={getTitle}></input>
             </div>
 
             <div>
                 <label htmlFor='date'>Enter Date:</label>
-                <input type="date" className='form-input' id='date' name='date' onChange={getDate}></input>
+                <input type="date" className='form-input' id='date' name='date' value={enteredDate} onChange={getDate}></input>
             </div>
 
             <div>
                 <label htmlFor='amount'>Enter Amount:</label>
-                <input type="text" className='form-input' id='amount' name='amount' onChange={getAmount}></input>
+                <input type="text" className='form-input' id='amount' name='amount' value={enteredAmount} onChange={getAmount}></input>
             </div>
 
             <div>
                 <label htmlFor='location'>Enter location:</label>
-                <input type="text" className='form-input' id='location' name='location' onChange={getLocation}></input>
+                <input type="text" className='form-input' id='location' name='location' value={enteredLocation} onChange={getLocation}></input>
             </div>
             <button id='form-btn'>Add Expense</button>
         </form>
+
+
+
+       
     );
 }
 
