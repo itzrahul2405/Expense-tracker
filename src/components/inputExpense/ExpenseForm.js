@@ -34,27 +34,81 @@ function ExpenseForm(){
         // console.log(enteredLocation)
     }
 
-    const myObj = {
-        'title': enteredTitle,
-        'date': enteredDate,
-        'amount': enteredAmount,
-        'location': enteredLocation
+
+
+    const submitHandler = (e) => {
+
+        e.preventDefault();
+
+        const myObj = {
+            'title': enteredTitle,
+            'date': new Date(enteredDate),
+            'amount': enteredAmount,
+            'location': enteredLocation
+        }
+
+        console.log(myObj)
     }
 
-    const [obj, setObj] = useState(myObj)
-    const logExpense = () => {
-        setObj({
-            'title': ' ',
-            'date': ' ',
-            'amount': ' ',
-            'location': ' '
-        })
-        console.log(obj)
-    }
+
+
+
+
+
+
+    // /* If we want to use only one state instead 4  but this is not recommanded (watch assignment video 11) */
+    // const [userInput, setUserInput] = useState({
+    //     enteredTitle: '',
+    //     enteredDate: '',
+    //     enteredAmount: '',
+    //     enteredLocation: ''
+    // })
+
+
+    // const getTitle = (e) => {
+
+    //     setUserInput({...userInput, enteredTitle: e.target.value})
+    //     console.log(userInput.enteredTitle)
+        
+    // }
+
+    // const getDate = (e) => {
+    //     setUserInput({...userInput, enteredDate: e.target.value})
+    //     // console.log(userInput.enteredDate)
+    // }
+
+    // const getAmount = (e) => {
+    //     setUserInput({...userInput, enteredAmount: e.target.value})
+    //     // console.log(userInput.enteredAmount)
+    // }
+
+    // const getLocation = (e) => {
+    //     setUserInput({...userInput, enteredLocation: e.target.value})
+    //     // console.log(userInput.enteredLocation)
+    // }
+
+
+    // const submitHandler = (e) => {
+
+    //     e.preventDefault();
+
+    //     const myObj = {
+    //         'title': userInput.enteredTitle,
+    //         'date': new Date(userInput.enteredDate),
+    //         'amount': userInput.enteredAmount,
+    //         'location': userInput.enteredLocation
+    //     }
+
+    //     console.log(myObj)
+    // }
+
+
+
+
 
     return (
 
-        <form id='form'>
+        <form id='form'  onSubmit={submitHandler}>
             <div>
                 <label htmlFor='title'>Enter Title:</label>
                 <input type="text" className='form-input' id='title' name='title' onChange={getTitle}></input>
@@ -74,7 +128,7 @@ function ExpenseForm(){
                 <label htmlFor='location'>Enter location:</label>
                 <input type="text" className='form-input' id='location' name='location' onChange={getLocation}></input>
             </div>
-            <button id='form-btn' onClick={logExpense}>Add Expense</button>
+            <button id='form-btn'>Add Expense</button>
         </form>
     );
 }
