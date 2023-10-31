@@ -15,9 +15,9 @@ const App = () => {
     {id: '5', date: new Date(2021, 1, 16), title: 'gift', amount: 20, location: 'new-york'}
   ])
 
-  const deleteExpenseHandler = (title) => {
+  const deleteExpenseHandler = (id) => {
      // console.log(props.expenses)
-     const filteredExpenses = expenses.filter((expense) => expense.title !== title);
+     const filteredExpenses = expenses.filter((expense) => expense.id !== id);
      setExpenses(filteredExpenses)
      // console.log(filteredExpenses)
   }
@@ -26,7 +26,7 @@ const App = () => {
   const addExpenseHandler = (expense) => {
     console.log('In App.js');
     // console.log(expense)
-    const newArr = [...expenses, expense]                   /* this is for display new expense on screen (in the UI) */
+    const newArr = [expense, ...expenses]                   /* this is for display new expense on screen (in the UI) */
     setExpenses(newArr)
     console.log(newArr) 
   }
