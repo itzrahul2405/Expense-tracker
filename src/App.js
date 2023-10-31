@@ -1,8 +1,9 @@
 import './App.css';
-import ExpenseItem from './components/Expenses/ExpenseItem';
+import Expenses from './components/Expenses/Expenses'
 import React, {useState} from 'react';
-import ExpenseForm from './components/inputExpense/ExpenseForm';
+// import ExpenseForm from './components/inputExpense/ExpenseForm';
 import NewExpense from './components/inputExpense/NewExpense';
+import ExpenseFilter from './components/Expenses/ExpenseFilter';
 
 const App = () => {
 
@@ -27,26 +28,23 @@ const App = () => {
     // console.log(expense)
     const newArr = [...expenses, expense]                   /* this is for display new expense on screen (in the UI) */
     setExpenses(newArr)
-    console.log(expenses) 
+    console.log(newArr) 
   }
+
+
+  const [filteredYear, setFilteredYear] = useState('2020')
+  const filterChangeHandler = (selectedYear) => {
+    setFilteredYear(selectedYear);
+  }
+
 
   return (
       <div>
         <h2>Expense Tracker</h2>
-
+        <ExpenseFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
         <NewExpense onAddExpense={addExpenseHandler}/>      {/* onAddExpense name is up to you following by on */}
+        <Expenses items = {expenses} onDelete = {deleteExpenseHandler} />
 
-        {expenses.map((exp, index) => (
-          // key = {index}
-          <ExpenseItem
-            ExpenseDate = {exp.date}
-            ExpenseTitle = {exp.title}
-            ExpenseAmount = {exp.amount}
-            locationOfExpenditure = {exp.location}
-            onDelete = {() => deleteExpenseHandler(exp.title)}
-          />
-        ))
-        }
       </div>  
   );
 
