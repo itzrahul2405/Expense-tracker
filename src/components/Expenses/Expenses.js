@@ -1,6 +1,7 @@
 import ExpenseItem from './ExpenseItem';
 import { useState } from 'react';
 import ExpenseFilter from './ExpenseFilter';
+import ExpenseList from './ExpenseList';
 
 const Expenses = (props) => {
 
@@ -66,29 +67,25 @@ const Expenses = (props) => {
 
 
 
+
     // this is the third way to render conditional statement
 
-    let expensesContent = <p>No Expenses Found.</p>
+    // let expensesContent = <p>No Expenses Found.</p>
+    // if (filteredExpenses.length  > 0 ){
+    //   expensesContent = filteredExpenses.map((exp, index) => (
+    //   <ExpenseItem
+    //     key = {exp.id}
+    //     ExpenseDate = {exp.date}
+    //     ExpenseTitle = {exp.title}
+    //     ExpenseAmount = {exp.amount}
+    //     locationOfExpenditure = {exp.location}
+    //     onDelete = {() => props.onDelete(exp.id)}
+    //   />
+    //   ))
 
-    if (filteredExpenses.length  > 0 ){
-      expensesContent = filteredExpenses.map((exp, index) => (
-      <ExpenseItem
-        key = {exp.id}
-        ExpenseDate = {exp.date}
-        ExpenseTitle = {exp.title}
-        ExpenseAmount = {exp.amount}
-        locationOfExpenditure = {exp.location}
-        onDelete = {() => props.onDelete(exp.id)}
-      />
-      ))
-
-      if (filteredExpenses.length === 1){
-        expensesContent = [...expensesContent , <p>Only single Expense here. Please add more...</p>]
-      }    
-    }
-
-    // if (filteredExpenses.length === 1){
-    //   expensesContent = [...expensesContent , <p>Only single Expense here. Please add more...</p>]
+    //   if (filteredExpenses.length === 1){
+    //     expensesContent = [...expensesContent , <p>Only single Expense here. Please add more...</p>]
+    //   }    
     // }
 
 
@@ -96,16 +93,12 @@ const Expenses = (props) => {
 
       <div>
           <ExpenseFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
-          {expensesContent}    
+          {/* {expensesContent}     */}
+          <ExpenseList items={filteredExpenses} onDelete={props.onDelete}/>
       </div>
         
     )
 }
-
-
-
-
-
 
 
 
