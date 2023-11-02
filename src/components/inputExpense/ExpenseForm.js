@@ -136,7 +136,8 @@ function ExpenseForm(props){
                 <label htmlFor='location'>Enter location:</label>
                 <input type="text" className='form-input' id='location' name='location' value={enteredLocation} onChange={getLocation}></input>
             </div>
-            <button id='form-btn'>Add Expense</button>
+            <button id='form-btn' >Add Expense</button>
+            <button id='cancel-btn' onClick={props.onCancel}>Cancel</button>
         </form>
 
 
@@ -146,3 +147,4 @@ function ExpenseForm(props){
 }
 
 export default ExpenseForm;
+    

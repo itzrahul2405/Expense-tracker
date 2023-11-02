@@ -1,0 +1,19 @@
+.newExpense-btn-container{
+    width: 80vw;
+    height: 150px;
+    border: 2px solid blue;
+    margin: 20px;
+    background-color: rgb(175, 155, 155);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#newExpense-btn{
+    width: 200px;
+    height: 40px;
+    background-color: beige;
+}
+
